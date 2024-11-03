@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "typeRoots": ["node_modules/@types", "*/src/**/types.d.ts"],
+        "noEmit": true,
+        "allowImportingTsExtensions": true,
+        "module": "ES2022",
+        "allowSyntheticDefaultImports": true
+    }
+}
