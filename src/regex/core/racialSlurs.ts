@@ -21,15 +21,18 @@ export const logResults = (
         return;
     }
 
-    const wordsToTest = testWords && testWords.length > 0 ? testWords : Object.values(data.testTerms).flat();
+    const wordsToTest = testWords.length > 0 ? testWords : Object.values(data.testTerms).flat();
 
     let results: string[] = [];
+    let webhookResults: { [key: string]: boolean } = {};
 
     wordsToTest.forEach(term => {
-        let output = `### Testing: **${term}**\n`;
+        let output = `## Testing: ${term}\n`;
 
+        webhookResults = {}; // Reset for each word
         for (const [key, regexArray] of Object.entries(matchers)) {
             const matchResult = regexArray.some(matcher => validateRegex(term, matcher));
+            webhookResults[key] = matchResult; // Collect for webhook
             output += `**${key}** Match: \`${matchResult}\`\n`;
         }
 
@@ -46,22 +49,13 @@ export const logResults = (
         }
 
         const now = new Date();
-        const dateString = `${now.getFullYear()}-${(now.getMonth() + 1).toString().padStart(2, "0")}-${now
-            .getDate()
-            .toString()
-            .padStart(2, "0")}_${now.getHours().toString().padStart(2, "0")}-${now
-            .getMinutes()
-            .toString()
-            .padStart(2, "0")}`;
+        const dateString = `${now.toISOString().slice(0, 10)}_${now.toTimeString().slice(0, 5).replace(":", "-")}`;
         const logFilePath = path.join(logDirectory, `results_${dateString}.md`);
 
         fs.writeFileSync(logFilePath, results.join(""));
     }
+
     if (useWebhook) {
-        sendMessageToWebhook(results)
+        sendMessageToWebhook(webhookResults);
     }
 };
-
-// Usage example:
-// logResults(true, true); // To use default matchers and log to file
-// logResults(false, true, { customMatchers: [/* user-defined regexes */] }, ["your", "custom", "words"]); // Use user-defined matchers and custom words

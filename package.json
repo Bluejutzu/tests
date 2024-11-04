@@ -1,18 +1,19 @@
 {
-  "name": "tests",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "deno run --allow-read --allow-write --env-file --allow-net --allow-env ./src/regex/index.ts "
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "axios": "^1.7.7"
-  },
-  "devDependencies": {
-    "@types/node": "^22.8.7"
-  }
+    "name": "tests",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "deno run --allow-read --allow-write --env-file --allow-net --allow-env ./src/regex/index.ts "
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "axios": "^1.7.7",
+        "discord.js": "14.16.0"
+    },
+    "devDependencies": {
+        "@types/node": "^22.8.7"
+    }
 }

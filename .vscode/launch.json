@@ -12,12 +12,7 @@
             "cwd": "${workspaceFolder}",
             "env": {},
             "runtimeExecutable": "C:\\Users\\Bluejutzu\\.deno\\bin\\deno.EXE",
-            "runtimeArgs": [
-                "run",
-                "--unstable",
-                "--inspect-wait",
-                "--allow-all"
-            ],
+            "runtimeArgs": ["run", "--unstable", "--inspect-wait", "--allow-all"],
             "attachSimplePort": 9229
         }
     ]
