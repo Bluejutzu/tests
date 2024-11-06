@@ -1,3 +1,4 @@
 import { logResults } from "./core/racialSlurs.ts";
+import { terms } from "./offensive_terms/terms.ts";
 
-logResults(["lmao", "nigga", "nigeria"], true, false, true );
+logResults(terms, true, false, true);

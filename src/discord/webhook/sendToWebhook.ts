@@ -4,35 +4,32 @@ import { EmbedBuilder } from "npm:discord.js";
 
 const webhookUrl = Deno.env.get("WEBHOOK_URL");
 
-export const sendMessageToWebhook = async (matcherResults: { [key: string]: boolean }): Promise<void> => {
+export const sendMessageToWebhook = async (fields: { name: string; value: string; inline: boolean }[], date: string): Promise<void> => {
     if (!webhookUrl) throw new Error("No webhook found");
-    if (!Object.keys(matcherResults).length) throw new Error("Empty matcher results");
-
-    // Create fields with diff formatting based on each matcher's result
-    const fields = Object.entries(matcherResults).map(([matcherName, result]) => ({
-        name: `**${matcherName}** Match`, // Bold matcher name
-        value: `\`\`\`diff\n${result ? "+ true" : "- false"}\n\`\`\``,
-        inline: false
-    }));
 
     const embed = new EmbedBuilder()
-        .setTitle("🔍 Matcher Test Results")
-        .setColor(0x5865f2) // Neutral color for the overall embed
+        .setTitle(`Regex Test Results - ${date}`)
+        .setDescription("(**Red**: fail/false; **Green**: success/true)")
+        .setColor(0x7289da)
         .addFields(fields);
 
-    try {
-        const response = await axios.post(
+    await axios
+        .post(
             webhookUrl,
             { embeds: [embed] },
             {
+                method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 }
             }
-        );
-        console.log("Message sent successfully:", response.data);
-    } catch (error) {
-        console.error("Error sending message:", error);
-        throw new Error(`Error: ${error}`);
-    }
+        )
+        .then(async res => {
+            const data = await res.data;
+            console.log("Message sent successfully:", data);
+        })
+        .catch(err => {
+            console.log(err);
+            throw new Error(`Error: ${err}}`);
+        });
 };

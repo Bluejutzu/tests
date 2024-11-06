@@ -1,7 +1,8 @@
 // deno-lint-ignore-file
 import { sendMessageToWebhook } from "../../discord/webhook/sendToWebhook.ts";
+import { getDate } from "../utils/index.ts";
 import { data } from "./data.ts";
-import { validateRegex } from "./validateRegex.ts";
+import { validateRegex } from "../utils/index.ts";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -24,22 +25,26 @@ export const logResults = (
     const wordsToTest = testWords.length > 0 ? testWords : Object.values(data.testTerms).flat();
 
     let results: string[] = [];
-    let webhookResults: { [key: string]: boolean } = {};
+    let webhookFields: any = []; 
 
     wordsToTest.forEach(term => {
         let output = `## Testing: ${term}\n`;
+        let matcherResults = "";
 
-        webhookResults = {}; // Reset for each word
         for (const [key, regexArray] of Object.entries(matchers)) {
             const matchResult = regexArray.some(matcher => validateRegex(term, matcher));
-            webhookResults[key] = matchResult; // Collect for webhook
+            matcherResults += `${matchResult ? "+ " : "- "}${key} Match: ${matchResult}\n`;
             output += `**${key}** Match: \`${matchResult}\`\n`;
         }
 
         output += `---\n`;
         results.push(output);
 
-        console.log(output);
+        webhookFields.push({
+            name: `Testing: ${term}`,
+            value: `\`\`\`diff\n${matcherResults}\`\`\``,
+            inline: false
+        });
     });
 
     if (logToFile) {
@@ -48,14 +53,13 @@ export const logResults = (
             fs.mkdirSync(logDirectory);
         }
 
-        const now = new Date();
-        const dateString = `${now.toISOString().slice(0, 10)}_${now.toTimeString().slice(0, 5).replace(":", "-")}`;
+        const dateString = getDate()
         const logFilePath = path.join(logDirectory, `results_${dateString}.md`);
 
         fs.writeFileSync(logFilePath, results.join(""));
     }
 
     if (useWebhook) {
-        sendMessageToWebhook(webhookResults);
+        sendMessageToWebhook(webhookFields, getDate());
     }
 };
