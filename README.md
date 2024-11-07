@@ -9,7 +9,5 @@
 ## List of relevant files/folders
 
 -   [offensive_terms](src/regex/offensive_terms/) (Folder)
-
 ---
-
-##
+**Benchmarks**: [Tests Folder](src/regex/tests/)
