@@ -5,6 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "deno run --allow-read --allow-write --env-file --allow-net --allow-env ./src/regex/index.ts",
+        "bench": "deno bench --allow-read --allow-write --env-file --allow-net --allow-env ./src/regex/tests/index.test.ts",
         "build": "tsc"
     },
     "keywords": [],

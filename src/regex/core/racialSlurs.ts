@@ -26,14 +26,17 @@ export const logResults = (
     let results: string[] = [];
     let webhookFields: any = [];
 
+
+    const inputCount = wordsToTest.length;
+
     wordsToTest.forEach(term => {
-        let output = `## Testing: ${term}\n`; // Fixed the missing backticks
+        let output = `## Testing: ${term}\n`;
         let matcherResults = "";
 
         for (const [key, regexArray] of Object.entries(matchers)) {
             const matchResult = regexArray.some(matcher => validateRegex(term, matcher));
-            matcherResults += `${matchResult ? "+ " : "- "}${key} Match: ${matchResult}\n`; // Fixed template literals
-            output += `**${key}** Match: \`${matchResult}\`\n`; // Fixed template literals
+            matcherResults += `${matchResult ? "+ " : "- "}${key} Match: ${matchResult}\n`;
+            output += `**${key}** Match: \`${matchResult}\`\n`;
         }
 
         output += `---\n`;
@@ -41,9 +44,17 @@ export const logResults = (
 
         webhookFields.push({
             name: `Testing: ${term}`,
-            value: `\`\`\`diff\n${matcherResults}\n\`\`\``, // Fixed formatting for code block
+            value: `\`\`\`diff\n${matcherResults}\n\`\`\``,
             inline: false
         });
+    });
+
+    results.push(`Total inputs tested: ${inputCount}`);
+
+    webhookFields.push({
+        name: "Total inputs tested",
+        value: `${inputCount}`,
+        inline: false
     });
 
     if (logToFile) {
@@ -53,9 +64,9 @@ export const logResults = (
         }
 
         const dateString = getDate();
-        const logFilePath = path.join(logDirectory, `results_${dateString}.md`); // Fixed template literals for filename
+        const logFilePath = path.join(logDirectory, `results_${dateString}.md`);
 
-        fs.writeFileSync(logFilePath, results.join("")); // Write the results to file
+        fs.writeFileSync(logFilePath, results.join("")); 
     }
 
     if (useWebhook) {

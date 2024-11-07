@@ -10,8 +10,8 @@ const defaultMatchers = {
     ],
     derogatoryMatchers: [/\b(b[i1!|]*tch)\b/, /\b(m[o0]r[o0]n)\b/, /\b(a[s5]sh[o0]le)\b/, /\b(r[e3]tard)\b/],
     channelMatchers: [
-        /^https?:\/\/(?:www\.)?discord\.com\/(channels|invites|app|users)\/\d+\/\d+\/?\d*$/,
-        /^https?:\/\/(?:www\.)?discord\.com\/$/ // Allow the base discord.com link
+        /^https?:\/\/(?:www\.)?discord\.com\/$/,
+        /^https?:\/\/(?:www\.)?discord\.com\/(channels|invites|app|users)\/\d+\/\d+\/?\d*$/
     ]
 };
 
