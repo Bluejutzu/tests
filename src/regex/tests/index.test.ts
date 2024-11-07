@@ -1,4 +1,4 @@
-import { logResults } from "../core/racialSlurs.ts"; 
+import { logResults } from "../core/logResults.ts"; 
 import { terms } from "../offensive_terms/terms.ts"; 
 
 Deno.bench({
