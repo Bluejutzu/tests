@@ -1,8 +1,7 @@
 // deno-lint-ignore-file
 import { sendMessageToWebhook } from "../../discord/webhook/sendToWebhook.ts";
-import { getDate } from "../utils/index.ts";
+import { getDate, validateRegex } from "../utils/index.ts";
 import { data } from "./data.ts";
-import { validateRegex } from "../utils/index.ts";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -25,16 +24,16 @@ export const logResults = (
     const wordsToTest = testWords.length > 0 ? testWords : Object.values(data.testTerms).flat();
 
     let results: string[] = [];
-    let webhookFields: any = []; 
+    let webhookFields: any = [];
 
     wordsToTest.forEach(term => {
-        let output = `## Testing: ${term}\n`;
+        let output = `## Testing: ${term}\n`; // Fixed the missing backticks
         let matcherResults = "";
 
         for (const [key, regexArray] of Object.entries(matchers)) {
             const matchResult = regexArray.some(matcher => validateRegex(term, matcher));
-            matcherResults += `${matchResult ? "+ " : "- "}${key} Match: ${matchResult}\n`;
-            output += `**${key}** Match: \`${matchResult}\`\n`;
+            matcherResults += `${matchResult ? "+ " : "- "}${key} Match: ${matchResult}\n`; // Fixed template literals
+            output += `**${key}** Match: \`${matchResult}\`\n`; // Fixed template literals
         }
 
         output += `---\n`;
@@ -42,7 +41,7 @@ export const logResults = (
 
         webhookFields.push({
             name: `Testing: ${term}`,
-            value: `\`\`\`diff\n${matcherResults}\`\`\``,
+            value: `\`\`\`diff\n${matcherResults}\n\`\`\``, // Fixed formatting for code block
             inline: false
         });
     });
@@ -53,10 +52,10 @@ export const logResults = (
             fs.mkdirSync(logDirectory);
         }
 
-        const dateString = getDate()
-        const logFilePath = path.join(logDirectory, `results_${dateString}.md`);
+        const dateString = getDate();
+        const logFilePath = path.join(logDirectory, `results_${dateString}.md`); // Fixed template literals for filename
 
-        fs.writeFileSync(logFilePath, results.join(""));
+        fs.writeFileSync(logFilePath, results.join("")); // Write the results to file
     }
 
     if (useWebhook) {

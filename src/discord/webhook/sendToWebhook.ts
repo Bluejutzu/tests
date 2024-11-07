@@ -1,10 +1,13 @@
 import "jsr:@std/dotenv/load";
-import axios from "npm:axios";
-import { EmbedBuilder } from "npm:discord.js";
+import axios from "axios";
+import { EmbedBuilder } from "discord.js";
 
-const webhookUrl = Deno.env.get("WEBHOOK_URL");
+const webhookUrl = process.env.WEBHOOK_URL;
 
-export const sendMessageToWebhook = async (fields: { name: string; value: string; inline: boolean }[], date: string): Promise<void> => {
+export const sendMessageToWebhook = async (
+    fields: { name: string; value: string; inline: boolean }[],
+    date: string
+): Promise<void> => {
     if (!webhookUrl) throw new Error("No webhook found");
 
     const embed = new EmbedBuilder()

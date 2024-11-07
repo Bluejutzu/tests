@@ -2,7 +2,6 @@
   "version": "4",
   "specifiers": {
     "jsr:@std/dotenv@*": "0.225.2",
-    "jsr:@std/dotenv@~0.225.2": "0.225.2",
     "npm:@types/node@^22.8.7": "22.8.7",
     "npm:axios@^1.7.7": "1.7.7",
     "npm:discord.js@14.16.0": "14.16.0"
@@ -197,9 +196,6 @@
     }
   },
   "workspace": {
-    "dependencies": [
-      "jsr:@std/dotenv@~0.225.2"
-    ],
     "packageJson": {
       "dependencies": [
         "npm:@types/node@^22.8.7",
