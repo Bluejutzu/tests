@@ -1,6 +1,6 @@
 ## Simple coding playground for side stuff
 
-[READ!](https://github.com/Bluejutzu/tests?tab=readme-ov-file#offensive-termswords)
+<!-- [READ!](https://github.com/Bluejutzu/tests?tab=readme-ov-file#offensive-termswords) -->
 
 ## Offensive Terms/Words
 > [!IMPORTANT]
