@@ -1,3 +1,4 @@
+// deno-lint-ignore-file no-process-globals
 import "jsr:@std/dotenv/load";
 import axios from "axios";
 import { EmbedBuilder } from "discord.js";
@@ -27,10 +28,6 @@ export const sendMessageToWebhook = async (
                 }
             }
         )
-        .then(async res => {
-            const data = await res.data;
-            console.log("Message sent successfully:", data);
-        })
         .catch(err => {
             console.log(err);
             throw new Error(`Error: ${err}}`);

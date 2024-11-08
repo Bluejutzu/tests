@@ -1,13 +1,14 @@
 // deno-lint-ignore-file
 import { sendMessageToWebhook } from "../../discord/webhook/sendToWebhook.ts";
-import { getDate, validateRegex } from "../utils/index.ts";
+import { getDate, validateRegex } from "../../lib/utils.ts";
 import { data } from "./data.ts";
 import fs from "node:fs";
 import path from "node:path";
 
 const defaultMatchers = data.defaultMatchers;
+let prevTerms: string[] = [];
 
-export const logResults = (
+export const logResults = async (
     testWords: string[],
     useDefaultMatchers: boolean,
     logToFile: boolean,
@@ -26,28 +27,37 @@ export const logResults = (
     let results: string[] = [];
     let webhookFields: any = [];
 
-
     const inputCount = wordsToTest.length;
 
     wordsToTest.forEach(term => {
-        let output = `## Testing: ${term}\n`;
-        let matcherResults = "";
+        if (!prevTerms.includes(term)) {
+            prevTerms.push(term);
 
-        for (const [key, regexArray] of Object.entries(matchers)) {
-            const matchResult = regexArray.some(matcher => validateRegex(term, matcher));
-            matcherResults += `${matchResult ? "+ " : "- "}${key} Match: ${matchResult}\n`;
-            output += `**${key}** Match: \`${matchResult}\`\n`;
+            let output = `## Testing: ${term}\n`;
+            let matcherResults = "";
+
+            for (const [key, regexArray] of Object.entries(matchers)) {
+                const matchResult = regexArray.some(matcher => validateRegex(term, matcher));
+                matcherResults += `${matchResult ? "+ " : "- "}${key} Match: ${matchResult}\n`;
+                output += `**${key}** Match: \`${matchResult}\`\n`;
+            }
+
+            output += `---\n`;
+            results.push(output);
+
+            webhookFields.push({
+                name: `Testing: ${term}`,
+                value: `\`\`\`diff\n${matcherResults}\n\`\`\``,
+                inline: false
+            });
+        } else {
+            // const index = prevTerms.findIndex(prevTerm => prevTerm === term);
+            // console.warn(
+            //     `SKIPPED OPERATION: ${term} exists already, ${index === -1 ? null : `[${index}]: ${prevTerms[index]}`}`
+            // );
         }
-
-        output += `---\n`;
-        results.push(output);
-
-        webhookFields.push({
-            name: `Testing: ${term}`,
-            value: `\`\`\`diff\n${matcherResults}\n\`\`\``,
-            inline: false
-        });
     });
+    prevTerms = [];
 
     results.push(`Total inputs tested: ${inputCount}`);
 
@@ -66,7 +76,7 @@ export const logResults = (
         const dateString = getDate();
         const logFilePath = path.join(logDirectory, `results_${dateString}.md`);
 
-        fs.writeFileSync(logFilePath, results.join("")); 
+        fs.writeFileSync(logFilePath, results.join(""));
     }
 
     if (useWebhook) {
