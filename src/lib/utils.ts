@@ -1,9 +1,9 @@
-export const validateRegex = (inputString: string, regex: RegExp): boolean => {
+export const validateRegex = (inputString: string, regex: RegExp, test?: boolean): boolean => {
     const result = regex.exec(inputString);
     if (!result || typeof result == null) {
         return false;
     } else {
-        console.log(result[0]);
+        test ? console.log(result[0]) : null;
         return true;
     }
 };
@@ -14,6 +14,6 @@ export const getDate = () => {
     return dateString;
 };
 
-export const delay = (ms: number) => {
-    new Promise(resolve => resolve(ms));
+export const delay = async (ms: number) => {
+    return await new Promise(resolve => resolve(ms));
 };

@@ -8,6 +8,7 @@ import path from "node:path";
 const defaultMatchers = data.defaultMatchers;
 let prevTerms: string[] = [];
 
+//TODO: rename this to something better cause it sounds ass
 export const logResults = async (
     testWords: string[],
     useDefaultMatchers: boolean,

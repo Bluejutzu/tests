@@ -34,7 +34,7 @@ Deno.bench({
     fn: () => {
         wordsToTest.forEach(v => {
             for (const [_, regexArray] of Object.entries(defaultMatchers!)) {
-                regexArray.some(matcher => validateRegex(v, matcher));
+                regexArray.some(matcher => validateRegex(v, matcher, false));
             }
         });
     }
