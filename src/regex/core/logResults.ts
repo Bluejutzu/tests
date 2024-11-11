@@ -1,9 +1,10 @@
 // deno-lint-ignore-file
-import { regexWebhook } from "../../discord/webhook/regexWebhook.ts";
-import { getDate, validateRegex } from "../../lib/utils.ts";
-import { data } from "./data.ts";
+
 import fs from "node:fs";
 import path from "node:path";
+import { data } from "./data.js";
+import { getDate, validateRegex } from "@/lib/utils.js";
+import { regexWebhook } from "@/discord/webhook/regexWebhook.js";
 
 const defaultMatchers = data.defaultMatchers;
 let prevTerms: string[] = [];

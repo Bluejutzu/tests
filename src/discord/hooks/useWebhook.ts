@@ -1,6 +1,7 @@
 // deno-lint-ignore-file
 // deno-lint-ignore-file no-process-globals
-import { DiscordWebhookConfig, ResponseReturn } from "@/types/types.ts";
+
+import { DiscordWebhookConfig, ResponseReturn } from "@/types/types.js";
 import axios from "axios";
 
 const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
@@ -54,22 +55,22 @@ export const useDiscordWebhook = async (config: DiscordWebhookConfig): Promise<R
         const response = await axios.post(webhookUrl, requestBody, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
-            },
+                "Content-Type": "application/json"
+            }
         });
 
         return {
             data: response.data,
             code: response.status,
-            statusText: response.statusText,
+            statusText: response.statusText
         };
     } catch (error: any) {
         // It's better to re-throw the error or handle it more gracefully here
         // rather than just setting data, code, and statusText in the res object.
-        console.error("Error sending webhook:", error); 
+        console.error("Error sending webhook:", error);
         return {
             data: error.message,
-            code: error.code, 
+            code: error.code
         };
     }
 };

@@ -1,11 +1,7 @@
 {
     "compilerOptions": {
         "outDir": "dist",
-        "typeRoots": [
-            "node_modules/@types",
-        ],
-        "noEmit": true,
-        "allowImportingTsExtensions": true,
+        "typeRoots": ["node_modules/@types", "src/types/types.ts"],
         "module": "Node16",
         "moduleResolution": "Node16",
         "target": "ESNext",
@@ -15,15 +11,9 @@
         "allowJs": true,
         "checkJs": true,
         "paths": {
-            "@/*": [
-                "./src/*"
-            ]
-        },
+            "@/*": ["./src/*"]
+        }
     },
-    "include": [
-        "src/**/*.ts",
-    ],
-    "exclude": [
-        "node_modules"
-    ]
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules"]
 }

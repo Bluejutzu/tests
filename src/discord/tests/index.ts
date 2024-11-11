@@ -1,5 +1,5 @@
-import { useDiscordWebhook } from "../hooks/useWebhook.ts";
 import { EmbedBuilder } from "discord.js";
+import { useDiscordWebhook } from "../hooks/useWebhook.js";
 
 const iEmbed = new EmbedBuilder().setTitle("Lmao").setDescription("Desc").setColor("Random");
 

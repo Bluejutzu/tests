@@ -4,10 +4,10 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "deno run --allow-read --allow-write --env-file --allow-net --allow-env ./src/regex/index.ts",
-        "test:d": "deno run --allow-env --env-file --allow-net ./src/discord/tests/index.ts",
-        "bench": "deno bench --allow-read --allow-write --env-file --allow-net --allow-env ./src/regex/tests/index.test.ts",
-        "build": "tsc"
+        "test": "node --env-file --require ts-node/register ./src/regex/index.ts",
+        "test:d": "node --env-file --require ts-node/register ./src/discord/tests/index.ts",
+        "bench": "node --env-file --require ts-node/register ./src/regex/tests/index.test.ts",
+        "build": "tsc -p tsconfig.json"
     },
     "keywords": [],
     "type": "module",
@@ -19,6 +19,7 @@
         "typescript": "^5.6.3"
     },
     "devDependencies": {
-        "@types/node": "^22.8.7"
+        "@types/node": "^22.8.7",
+        "ts-node": "^10.9.1"
     }
 }
