@@ -1,15 +1,14 @@
 // deno-lint-ignore-file no-process-globals
-import "jsr:@std/dotenv/load";
 import axios from "axios";
 import { EmbedBuilder } from "discord.js";
 
 const webhookUrl = process.env.WEBHOOK_URL;
 
-export const sendMessageToWebhook = async (
+export const regexWebhook = async (
     fields: { name: string; value: string; inline: boolean }[],
     date: string
 ): Promise<void> => {
-    if (!webhookUrl) throw new Error("No webhook found");
+    if (!webhookUrl) return console.log(new Error("No webhook url found"));
 
     const embed = new EmbedBuilder()
         .setTitle(`Regex Test Results - ${date}`)

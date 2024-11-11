@@ -1,5 +1,5 @@
 // deno-lint-ignore-file
-import { sendMessageToWebhook } from "../../discord/webhook/sendToWebhook.ts";
+import { regexWebhook } from "../../discord/webhook/regexWebhook.ts";
 import { getDate, validateRegex } from "../../lib/utils.ts";
 import { data } from "./data.ts";
 import fs from "node:fs";
@@ -81,6 +81,6 @@ export const logResults = async (
     }
 
     if (useWebhook) {
-        sendMessageToWebhook(webhookFields, getDate());
+        regexWebhook(webhookFields, getDate());
     }
 };
