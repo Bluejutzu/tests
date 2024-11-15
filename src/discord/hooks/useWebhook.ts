@@ -1,5 +1,6 @@
 import { DiscordWebhookConfig, ResponseReturn } from "../../types/types";
 import axios from "axios";
+import 'dotenv/config'
 
 const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
 

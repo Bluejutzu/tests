@@ -5,6 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "node ./dist/regex/index.js",
+        "test:rblx": "node ./dist/discord/tests/rblx.test.js",
         "watch": "tsc -w -p tsconfig.json",
         "build": "tsc -p tsconfig.json"
     },
@@ -15,6 +16,7 @@
     "dependencies": {
         "axios": "^1.7.7",
         "discord.js": "14.16.0",
+        "dotenv": "^16.4.5",
         "typescript": "^5.6.3"
     },
     "devDependencies": {

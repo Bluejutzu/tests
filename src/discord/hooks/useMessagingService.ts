@@ -1,17 +1,18 @@
 import { RblxWebhookConfig } from "../../types/types";
-import { responseReplies } from "./data";
+import { responseReplies } from "./data/index.js";
 import axios, { AxiosError } from "axios";
+import "dotenv/config";
 
+const universeId = process.env.ROBLOX_UNIVERSE_ID;
+const apiKey = process.env.ROBLOX_OPEN_CLOUD_API_KEY;
 const ROBLOX_API_BASE_URL = "https://apis.roblox.com/messaging-service/v1/universes";
 
 export const useRblxMessagingService = async (config: RblxWebhookConfig) => {
     const { message, topic } = config;
-    const universeId = process.env.ROBLOX_UNIVERSE_ID;
-    const apiKey = process.env.ROBLOX_OPEN_CLOUD_API_KEY;
 
     if (!universeId || !apiKey) {
-        console.error("ROBLOX_UNIVERSE_ID or ROBLOX_OPEN_CLOUD_API_KEY is not set.");
-        return;
+        console.log(apiKey, universeId);
+        return console.error("ROBLOX_UNIVERSE_ID or ROBLOX_OPEN_CLOUD_API_KEY is not set.");
     }
 
     const url = `${ROBLOX_API_BASE_URL}/${universeId}/topics/${topic}`;
@@ -39,7 +40,7 @@ function handleMessagingError(error: AxiosError) {
     const responseCode = error.response?.status;
     const responseData = error.response?.data;
 
-    let errorMessage = "**Error:** Unknown error occurred.";
+    let errorMessage = "Error: Unknown error occurred.";
 
     if (responseCode && responseReplies[responseCode]) {
         const reply = responseReplies[responseCode];

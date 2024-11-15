@@ -14,7 +14,7 @@ export interface RegexTestConfig {
 }
 
 export interface RblxWebhookConfig {
-    message: string, 
+    message: string | { [key: string]: string }, 
     topic: string
     secure?: boolean
 }
