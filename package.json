@@ -4,9 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "node --env-file --require ts-node/register ./src/regex/index.ts",
-        "test:d": "node --env-file --require ts-node/register ./src/discord/tests/index.ts",
-        "bench": "node --env-file --require ts-node/register ./src/regex/tests/index.test.ts",
+        "test": "node ./dist/regex/index.js",
+        "watch": "tsc -w -p tsconfig.json",
         "build": "tsc -p tsconfig.json"
     },
     "keywords": [],
