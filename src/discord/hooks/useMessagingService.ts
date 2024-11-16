@@ -20,7 +20,7 @@ export const useRblxMessagingService = async (config: RblxWebhookConfig) => {
     try {
         const response = await axios.post(
             url,
-            { message },
+            { message: JSON.stringify(message) },
             {
                 headers: {
                     "x-api-key": apiKey,
@@ -40,7 +40,7 @@ function handleMessagingError(error: AxiosError) {
     const responseCode = error.response?.status;
     const responseData = error.response?.data;
 
-    let errorMessage = "Error: Unknown error occurred.";
+    let errorMessage = `An unknown issue occured.`
 
     if (responseCode && responseReplies[responseCode]) {
         const reply = responseReplies[responseCode];
@@ -52,5 +52,5 @@ function handleMessagingError(error: AxiosError) {
                 : errorMessage;
     }
 
-    console.error(new Error(errorMessage));
+    console.error(errorMessage + `${responseCode}, ${responseData}`);
 }
