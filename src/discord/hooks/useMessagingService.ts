@@ -52,5 +52,5 @@ function handleMessagingError(error: AxiosError) {
                 : errorMessage;
     }
 
-    console.error(errorMessage + `${responseCode}, ${responseData}`);
+    console.error(errorMessage + `\n${responseCode}, ${responseData}`);
 }
