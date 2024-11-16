@@ -1,30 +1,24 @@
-// deno-lint-ignore-file
-
-import fs from "node:fs";
-import path from "node:path";
+import fs from "fs";
+import path from "path";
+import { regexWebhook } from "../../discord/webhook/regexWebhook.js";
+import { validateRegex, getDate } from "../../lib/utils.js";
 import { data } from "./data.js";
-import { getDate, validateRegex } from "@/lib/utils.js";
-import { regexWebhook } from "@/discord/webhook/regexWebhook.js";
+import { RegexTestConfig } from "../../types/types.js";
+import { testTerms } from "../offensive_terms/terms.js";
 
 const defaultMatchers = data.defaultMatchers;
 let prevTerms: string[] = [];
 
-//TODO: rename this to something better cause it sounds ass
-export const logResults = async (
-    testWords: string[],
-    useDefaultMatchers: boolean,
-    logToFile: boolean,
-    useWebhook: boolean,
-    userMatchers?: { [key: string]: RegExp[] }
-) => {
-    const matchers = useDefaultMatchers ? defaultMatchers : userMatchers;
+export const runRegexTests = async (config: RegexTestConfig) => {
+    const matchers = config.useDefaultMatchers ? defaultMatchers : config.userMatchers;
 
     if (!matchers) {
         console.error("No matchers provided and default matchers are not used.");
         return;
     }
-
-    const wordsToTest = testWords.length > 0 ? testWords : Object.values(data.testTerms).flat();
+    console.group("runRegexTests");
+    console.log("Starting");
+    const wordsToTest = config.testWords.length > 0 ? config.testWords : Object.values(testTerms).flat();
 
     let results: string[] = [];
     let webhookFields: any = [];
@@ -53,10 +47,10 @@ export const logResults = async (
                 inline: false
             });
         } else {
-            // const index = prevTerms.findIndex(prevTerm => prevTerm === term);
-            // console.warn(
-            //     `SKIPPED OPERATION: ${term} exists already, ${index === -1 ? null : `[${index}]: ${prevTerms[index]}`}`
-            // );
+            const index = prevTerms.findIndex(prevTerm => prevTerm === term);
+            console.warn(
+                `SKIPPED OPERATION: ${term} exists already, ${index === -1 ? null : `[${index}]: ${prevTerms[index]}`}`
+            );
         }
     });
     prevTerms = [];
@@ -69,7 +63,7 @@ export const logResults = async (
         inline: false
     });
 
-    if (logToFile) {
+    if (config.logToFile) {
         const logDirectory = path.join(import.meta.dirname!, "logs");
         if (!fs.existsSync(logDirectory)) {
             fs.mkdirSync(logDirectory);
@@ -81,7 +75,9 @@ export const logResults = async (
         fs.writeFileSync(logFilePath, results.join(""));
     }
 
-    if (useWebhook) {
+    if (config.useWebhook) {
         regexWebhook(webhookFields, getDate());
     }
+    console.log("Ended");
+    console.groupEnd();
 };

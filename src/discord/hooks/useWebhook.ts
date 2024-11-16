@@ -1,8 +1,6 @@
-// deno-lint-ignore-file
-// deno-lint-ignore-file no-process-globals
-
-import { DiscordWebhookConfig, ResponseReturn } from "@/types/types.js";
+import { DiscordWebhookConfig, ResponseReturn } from "../../types/types";
 import axios from "axios";
+import 'dotenv/config'
 
 const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
 
@@ -47,6 +45,7 @@ export const useDiscordWebhook = async (config: DiscordWebhookConfig): Promise<R
     if (message) {
         requestBody.message = message;
     }
+
     if (embeds && embeds.length > 0) {
         requestBody.embeds = embeds;
     }
