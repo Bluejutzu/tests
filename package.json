@@ -7,20 +7,32 @@
         "test": "node ./dist/regex/index.js",
         "test:rblx": "node ./dist/discord/tests/rblx.test.js",
         "watch": "tsc -w -p tsconfig.json",
-        "build": "tsc -p tsconfig.json"
+        "build": "tsc -p tsconfig.json",
+        "lint": "npx eslint src"
     },
     "keywords": [],
     "type": "module",
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@stylistic/eslint-plugin": "^2.10.1",
         "axios": "^1.7.7",
         "discord.js": "14.16.0",
         "dotenv": "^16.4.5",
-        "typescript": "^5.6.3"
+        "eslint-plugin-simple-import-sort": "^12.1.1",
+        "eslint-plugin-unused-imports": "^4.1.4",
+        "globals": "^15.12.0",
+        "typescript": "^5.6.3",
+        "typescript-eslint": "^8.14.0"
     },
     "devDependencies": {
         "@types/node": "^22.8.7",
+        "@typescript-eslint/eslint-plugin": "^8.14.0",
+        "eslint": "^9.15.0",
+        "eslint-plugin-import-sort": "^0.0.0",
+        "eslint-plugin-prettier": "^5.2.1",
+        "eslint-plugin-stylistic": "^0.0.0-0",
+        "prettier": "^3.3.3",
         "ts-node": "^10.9.1"
     }
 }
