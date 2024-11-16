@@ -4,22 +4,21 @@ import { regexWebhook } from "../../discord/webhook/regexWebhook.js";
 import { validateRegex, getDate } from "../../lib/utils.js";
 import { data } from "./data.js";
 import { RegexTestConfig } from "../../types/types.js";
+import { testTerms } from "../offensive_terms/terms.js";
 
 const defaultMatchers = data.defaultMatchers;
 let prevTerms: string[] = [];
 
-export const runRegexTests = async (
-    config: RegexTestConfig
-) => {
+export const runRegexTests = async (config: RegexTestConfig) => {
     const matchers = config.useDefaultMatchers ? defaultMatchers : config.userMatchers;
 
     if (!matchers) {
         console.error("No matchers provided and default matchers are not used.");
         return;
     }
-    console.group("runRegexTests")
-    console.log("Starting")
-    const wordsToTest = config.testWords.length > 0 ? config.testWords : Object.values(data.testTerms).flat();
+    console.group("runRegexTests");
+    console.log("Starting");
+    const wordsToTest = config.testWords.length > 0 ? config.testWords : Object.values(testTerms).flat();
 
     let results: string[] = [];
     let webhookFields: any = [];
@@ -79,6 +78,6 @@ export const runRegexTests = async (
     if (config.useWebhook) {
         regexWebhook(webhookFields, getDate());
     }
-    console.log("Ended")
-    console.groupEnd()
+    console.log("Ended");
+    console.groupEnd();
 };

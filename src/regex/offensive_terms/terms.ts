@@ -22,3 +22,7 @@ export const terms = [
     "balls",
     "fidget spinner"
 ];
+export const testTerms = {
+    racialSlurs: ["nigga", "nigger", "niggar", "niger", "niga", "nigar", "nikka", "nikar", "nigan", "nikan", "nigeria"],
+    derogatory: ["bitch", "moron", "asshole", "retard"]
+};

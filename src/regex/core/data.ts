@@ -1,8 +1,3 @@
-const testTerms = {
-    racialSlurs: ["nigga", "nigger", "niggar", "niger", "niga", "nigar", "nikka", "nikar", "nigan", "nikan", "nigeria"],
-    derogatory: ["bitch", "moron", "asshole", "retard"]
-};
-
 const defaultMatchers = {
     racialSlursMatchers: [
         /\b(n[i1l!|]+[gqk]+[gqka@e3]*[rz]?)\b/,
@@ -30,6 +25,5 @@ const outputs = {
 
 export const data = {
     defaultMatchers,
-    testTerms,
     outputs
 };
