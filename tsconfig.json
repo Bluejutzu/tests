@@ -10,8 +10,8 @@
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "sourceMap": true,
-        "allowJs": true,
+        "allowJs": true
     },
-    "include": ["src/**/*.ts"],
-    "exclude": ["node_modules"]
+    "include": ["src/package/**/*.ts"],
+    "exclude": ["node_modules", "src/types/types.ts", "src/core/regex/webhook"]
 }

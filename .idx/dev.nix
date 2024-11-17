@@ -1,6 +1,6 @@
 # To learn more about how to use Nix to configure your environment
 # see: https://developers.google.com/idx/guides/customize-idx-env
-{ pkgs, ... }: {
+{ pkgs,... }: {
   # Which nixpkgs channel to use.
   channel = "stable-24.05"; # or "unstable"
 
@@ -11,6 +11,7 @@
     # pkgs.python311Packages.pip
     # pkgs.nodejs_20
     # pkgs.nodePackages.nodemon
+    pkgs.corepack_22
   ];
 
   # Sets environment variables in the workspace

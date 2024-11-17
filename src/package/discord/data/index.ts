@@ -1,4 +1,4 @@
-export const responseReplies: { [code: number]: string | { [key: string]: string } } = {
+export const responseReplies: Record<number, string | { [key: string]: string; default: string }> = {
     200: "Message successfully sent!",
     400: {
         default: "Error: An unknown issue has occurred.",
