@@ -11,8 +11,8 @@ export const regexWebhook = async (
         console.error(new Error("No webhook url found " + webhookUrl));
         return;
     }
-    console.group("regexWebhook")
-    console.log("Starting")
+    console.group("regexWebhook");
+    console.log("Starting");
     const embed = new EmbedBuilder()
         .setTitle(`Regex Test Results - ${date}`)
         .setDescription("(**Red**: fail/false; **Green**: success/true)")
@@ -28,8 +28,8 @@ export const regexWebhook = async (
 
     try {
         await axios.post(webhookUrl, { embeds: [embed] }, requestOptions);
-        console.log("Ended")
-        console.groupEnd()
+        console.log("Ended");
+        console.groupEnd();
     } catch (error) {
         console.error(error);
         throw new Error(`Error sending webhook: ${error}`);

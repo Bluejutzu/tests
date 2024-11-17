@@ -1,63 +1,117 @@
-import stylistic from "@stylistic/eslint-plugin";
-import tseslint from "typescript-eslint";
-import prettier from "eslint-plugin-prettier";
-import importSort from "eslint-plugin-simple-import-sort";
-import unusedImports from "eslint-plugin-unused-imports";
+/*
+ * SPDX-License-Identifier: GPL-3.0
+ * Vesktop, a desktop app aiming to give you a snappier Discord Experience
+ * Copyright (c) 2023 Vendicated and Vencord contributors
+ */
 
 //@ts-check
 
+import stylistic from "@stylistic/eslint-plugin";
+import pathAlias from "eslint-plugin-path-alias";
+import importSort from "eslint-plugin-simple-import-sort";
+import unusedImports from "eslint-plugin-unused-imports";
+import tseslint from "typescript-eslint";
+import prettier from "eslint-plugin-prettier";
+
 export default tseslint.config(
     { ignores: ["dist"] },
+
     {
-        files: ["**/*.ts", "*.ts", "**/*.tsx", "*.tsx", "**/*.js", "*.js", "**/*.jsx", "*.jsx"],
-        plugins: { stylistic, prettier, importSort, unusedImports
-            
-         },
-        languageOptions: {
-            parser: tseslint.parser,
-            parserOptions: {
-                project: true,
-                tsconfigRootDir: import.meta.dirname
-            }
+        extends: [],
+        files: ["src/package/discord/*.{tsx,ts,mts,mjs,js,jsx}"],
+        plugins: {
+            "@stylistic": stylistic,
+            importSort,
+            unusedImports,
+            pathAlias,
+            prettier
         },
         settings: {
             "import/resolver": {
                 alias: {
-                    map: []
+                    map: [
+                        ["@lib", "./lib"],
+                        ["@utils", "./src/utils"],
+                        ["@api", "./src/api"],
+                        ["@components", "./src/components"]
+                    ]
                 }
             }
         },
+        languageOptions: {
+            parser: tseslint.parser,
+            parserOptions: {
+                project: ["./tsconfig.build.json"]
+            }
+        },
+
         rules: {
-            // Previous rules
-            "import-sort/sort": "error",
-            "prettier/prettier": "error",
-            "import/order": [
+            // ESLint Rules
+
+            yoda: "error",
+            eqeqeq: ["error", "always", { null: "ignore" }],
+            "prefer-destructuring": [
                 "error",
                 {
-                    groups: ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
-                    "newlines-between": "always",
-                    alphabetize: { order: "asc", caseInsensitive: true }
+                    VariableDeclarator: { array: false, object: true },
+                    AssignmentExpression: { array: false, object: false }
                 }
             ],
-            // Previous @typescript-eslint rules
-            "stylistic/spaced-comment": ["error", "always", { markers: ["!"] }],
-            "stylistic/no-extra-semi": "error",
-            "@typescript-eslint/consistent-type-imports": "error",
-            "@typescript-eslint/explicit-function-return-type": "off",
-            "@typescript-eslint/explicit-member-accessibility": "off",
-            "@typescript-eslint/explicit-module-boundary-types": "off",
-            "@typescript-eslint/no-empty-function": "off",
-            "@typescript-eslint/no-empty-interface": "off",
-            "@typescript-eslint/no-explicit-any": "off",
-            "@typescript-eslint/no-inferrable-types": "off",
-            "@typescript-eslint/no-non-null-assertion": "off",
-            "@typescript-eslint/no-unused-vars": "off",
-            "@typescript-eslint/no-var-requires": "off",
-            // Previous import rules
-            "import/default": "off",
-            "import/namespace": "off",
-            "import/no-named-as-default": "off",
-            "import/no-named-as-default-member": "off"
+            "operator-assignment": ["error", "always"],
+            "no-useless-computed-key": "error",
+            "no-unneeded-ternary": ["error", { defaultAssignment: false }],
+            "no-invalid-regexp": "error",
+            "no-constant-condition": ["error", { checkLoops: false }],
+            "no-duplicate-imports": "error",
+            "dot-notation": "error",
+            "no-fallthrough": "error",
+            "for-direction": "error",
+            "no-async-promise-executor": "error",
+            "no-cond-assign": "error",
+            "no-dupe-else-if": "error",
+            "no-duplicate-case": "error",
+            "no-irregular-whitespace": "error",
+            "no-loss-of-precision": "error",
+            "no-misleading-character-class": "error",
+            "no-prototype-builtins": "error",
+            "no-regex-spaces": "error",
+            "no-shadow-restricted-names": "error",
+            "no-unexpected-multiline": "error",
+            "no-unsafe-optional-chaining": "error",
+            "no-useless-backreference": "error",
+            "use-isnan": "error",
+            "prefer-const": "error",
+            "prefer-spread": "error",
+
+            // Styling Rules
+            "@stylistic/spaced-comment": ["error", "always", { markers: ["!"] }],
+            "@stylistic/no-extra-semi": "error",
+            "@stylistic/jsx-quotes": ["error", "prefer-double"],
+            "@stylistic/quotes": ["error", "double", { avoidEscape: true }],
+            "@stylistic/no-mixed-spaces-and-tabs": "error",
+            "@stylistic/arrow-parens": ["error", "as-needed"],
+            "@stylistic/eol-last": ["error", "always"],
+            "@stylistic/no-multi-spaces": "error",
+            "@stylistic/no-trailing-spaces": "error",
+            "@stylistic/no-whitespace-before-property": "error",
+            "@stylistic/semi": ["error", "always"],
+            "@stylistic/semi-style": ["error", "last"],
+            "@stylistic/space-in-parens": ["error", "never"],
+            "@stylistic/block-spacing": ["error", "always"],
+            "@stylistic/object-curly-spacing": ["error", "always"],
+            "@stylistic/func-call-spacing": ["error", "never"],
+
+            // Plugin Rules
+            "importSort/imports": "error",
+            "importSort/exports": "error",
+            "unusedImports/no-unused-imports": "error",
+            "pathAlias/no-relative": "error",
+            "prettier/prettier": [
+                "error",
+                {
+                    endOfLine: "auto"
+                }
+            ]
         }
     }
 );

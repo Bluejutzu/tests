@@ -1,4 +1,4 @@
-import { runRegexTests } from "../regex/core/runRegexTests.js";
-import { terms } from "../regex/offensive_terms/terms.js";
+import { runRegexTests } from "./runRegexTests";
+import { terms } from "./terms";
 
 runRegexTests({ testWords: terms, useDefaultMatchers: true, useWebhook: true });

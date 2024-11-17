@@ -1,12 +1,13 @@
 import fs from "fs";
 import path from "path";
-import { regexWebhook } from "../../discord/webhook/regexWebhook.js";
-import { validateRegex, getDate } from "../../lib/utils.js";
-import { data } from "./data.js";
-import { RegexTestConfig } from "../../types/types.js";
-import { testTerms } from "../offensive_terms/terms.js";
 
-const defaultMatchers = data.defaultMatchers;
+import { regexWebhook } from "../../discord/webhook/regexWebhook.js";
+import { RegexTestConfig } from "../../types/types.js";
+import { getDate, validateRegex } from "../utils.js";
+import { data } from "./data.js";
+import { testTerms } from "./terms.js";
+
+const { defaultMatchers } = data;
 let prevTerms: string[] = [];
 
 export const runRegexTests = async (config: RegexTestConfig) => {
@@ -20,8 +21,8 @@ export const runRegexTests = async (config: RegexTestConfig) => {
     console.log("Starting");
     const wordsToTest = config.testWords.length > 0 ? config.testWords : Object.values(testTerms).flat();
 
-    let results: string[] = [];
-    let webhookFields: any = [];
+    const results: string[] = [];
+    const webhookFields: any = [];
 
     const inputCount = wordsToTest.length;
 
@@ -38,7 +39,7 @@ export const runRegexTests = async (config: RegexTestConfig) => {
                 output += `**${key}** Match: \`${matchResult}\`\n`;
             }
 
-            output += `---\n`;
+            output += "---\n";
             results.push(output);
 
             webhookFields.push({
