@@ -1,8 +1,8 @@
 {
-    "name": "tests",
+    "name": "bluejutzu-package",
     "version": "1.0.0",
     "description": "Lowkey useless",
-    "main": "dist/discord/index.js",
+    
     "scripts": {
         "test": "node ./dist/regex/index.js",
         "test:rblx": "node ./dist/discord/tests/rblx.test.js",
@@ -10,6 +10,7 @@
         "build": "tsc -p tsconfig.build.json",
         "lint:f": "npx prettier . --write && npx eslint . --fix"
     },
+    
     "keywords": [],
     "type": "module",
     "repository": {
