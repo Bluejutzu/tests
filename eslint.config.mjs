@@ -18,7 +18,7 @@ export default tseslint.config(
 
     {
         extends: [],
-        files: ["src/package/discord/*.{tsx,ts,mts,mjs,js,jsx}"],
+        files: ["src/package/**/*.{tsx,ts,mts,mjs,js,jsx}"],
         plugins: {
             "@stylistic": stylistic,
             importSort,

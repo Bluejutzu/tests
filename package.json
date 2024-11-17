@@ -2,16 +2,19 @@
     "name": "tests",
     "version": "1.0.0",
     "description": "Lowkey useless",
+    "main": "dist/index.js",
     "scripts": {
         "test": "node ./dist/regex/index.js",
         "test:rblx": "node ./dist/discord/tests/rblx.test.js",
         "watch": "tsc -w -p tsconfig.json",
         "build": "tsc -p tsconfig.build.json",
-        "lint": "npx prettier . && npx eslint .",
         "lint:f": "npx prettier . --write && npx eslint . --fix"
     },
     "keywords": [],
     "type": "module",
+    "repository": {
+        "url": "https://github.com/Bluejutzu/tests"
+    },
     "files": [
         "dist/**/*.js"
     ],

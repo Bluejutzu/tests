@@ -1,14 +1,21 @@
 import fs from "fs";
 import path from "path";
 
-import { regexWebhook } from "../../discord/webhook/regexWebhook.js";
-import { RegexTestConfig } from "../../types/types.js";
+import { regexWebhook } from "../../package/discord/webhook/regexWebhook.js";
 import { getDate, validateRegex } from "../utils.js";
 import { data } from "./data.js";
 import { testTerms } from "./terms.js";
 
 const { defaultMatchers } = data;
 let prevTerms: string[] = [];
+
+export interface RegexTestConfig {
+    testWords: string[];
+    useDefaultMatchers?: boolean;
+    logToFile?: boolean;
+    useWebhook?: boolean;
+    userMatchers?: { [key: string]: RegExp[] };
+}
 
 export const runRegexTests = async (config: RegexTestConfig) => {
     const matchers = config.useDefaultMatchers ? defaultMatchers : config.userMatchers;
