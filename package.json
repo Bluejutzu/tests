@@ -2,7 +2,7 @@
     "name": "tests",
     "version": "1.0.0",
     "description": "Lowkey useless",
-    "main": "dist/index.js",
+    "main": "dist/discord/index.js",
     "scripts": {
         "test": "node ./dist/regex/index.js",
         "test:rblx": "node ./dist/discord/tests/rblx.test.js",
