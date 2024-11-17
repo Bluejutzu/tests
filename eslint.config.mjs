@@ -18,7 +18,7 @@ export default tseslint.config(
 
     {
         extends: [],
-        files: ["src/package/**/*.{tsx,ts,mts,mjs,js,jsx}"],
+        files: ["src/**/*.{tsx,ts,mts,mjs,js,jsx}"],
         plugins: {
             "@stylistic": stylistic,
             importSort,
@@ -41,7 +41,8 @@ export default tseslint.config(
         languageOptions: {
             parser: tseslint.parser,
             parserOptions: {
-                project: ["./tsconfig.build.json"]
+                project: true,
+                tsconfigRootDir: import.meta.dirname
             }
         },
 

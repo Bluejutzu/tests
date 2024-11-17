@@ -3,7 +3,7 @@ const validateRegex = (inputString: string, regex: RegExp, test?: boolean): bool
     if (!result || typeof result == null) {
         return false;
     } else {
-        test ? console.log('Match found:', result[0]) : null;
+        test ? console.log("Match found:", result[0]) : null;
         return true;
     }
 };
@@ -22,4 +22,4 @@ export const utils = {
     validateRegex,
     getDate,
     delay
-}
+};
