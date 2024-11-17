@@ -6,8 +6,8 @@ import { DiscordWebhook } from "./components/useWebhook";
 const obj = { user: "bluejutzu", reason: "lmao" };
 
 const messagingService = new RobloxMessagingService({
-    universeId: process.env.ROBLOX_UNIVERSE_ID,
-    apiKey: process.env.ROBLOX_OPEN_CLOUD_API_KEY
+    universeId: process.env.ROBLOX_UNIVERSE_ID!,
+    apiKey: process.env.ROBLOX_OPEN_CLOUD_API_KEY!
 });
 
 messagingService.sendMessage({
@@ -17,7 +17,7 @@ messagingService.sendMessage({
 
 const _Embed = new EmbedBuilder().setTitle("Lmao").setDescription("Desc").setColor("Random");
 
-const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
+const webhookUrl = process.env.DISCORD_WEBHOOK_URL!;
 const webhook = new DiscordWebhook(webhookUrl);
 
 const response = await webhook.send({
