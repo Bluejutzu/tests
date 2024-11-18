@@ -2,8 +2,8 @@
     "compilerOptions": {
         "outDir": "dist",
         "typeRoots": ["./node_modules/@types"],
-        "module": "CommonJS",
-        "moduleResolution": "node",
+        "module": "Preserve",
+        "moduleResolution": "Bundler",
         "target": "ESNext",
         "noEmit": false,
         "noImplicitAny": true,
