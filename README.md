@@ -1,19 +1,14 @@
-## Simple coding playground for side stuff
+# bluejutzu-package
 
-<!-- [READ!](https://github.com/Bluejutzu/tests?tab=readme-ov-file#offensive-termswords) -->
+Lowkey useless (for now!). This package provides a foundation for building a Discord bot and related API functionality using Hono, TypeScript, and other useful tools.
 
-## Offensive Terms/Words
 
-> [!IMPORTANT]
-> Any offensive words/terms are **NOT** directed towards _groups of people_ or an _individual person_.
+## Getting Started
 
-> [!CAUTION]
-> Any file/folder name that contains `offensive_` in its name has offensive terms or words.
-
-## List of relevant files/folders
-
--   [offensive_terms](src/regex/offensive_terms/) (Folder)
-
----
-
-**Benchmarks**: [Tests Folder](src/regex/tests/)
+1. **Installation:**
+   ```bash
+   npm install bluejutzu-package 
+   // or
+   pnpm install bluejutzu-package
+   // or
+   yarn add bluejutzu-package

@@ -18,8 +18,17 @@ const delay = async (ms: number) => {
     return await new Promise(resolve => resolve(ms));
 };
 
-export const utils = {
-    validateRegex,
-    getDate,
-    delay
+const logger = (message: string, level: "info" | "warn" | "error" = "info") => {
+    const now = new Date();
+    const timestamp = `[${now.toISOString()}]`;
+    const levelString = level.toUpperCase().padEnd(5);
+    const output = `${timestamp} ${levelString} ${message}`;
+
+    if (level === "error") {
+        console.error(output);
+    } else if (level === "warn") console.warn(output);
+
+    console.log(`${timestamp} ${message}`);
 };
+
+export { delay, getDate, logger, validateRegex };

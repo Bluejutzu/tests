@@ -4,12 +4,12 @@
     "description": "Lowkey useless",
     "private": "true",
     "scripts": {
-        "dev": "tsx src/dev/app.ts",
+        "dev": "tsx src/api/app.ts",
         "test": "node ./dist/regex/index.js",
         "test:rblx": "node ./dist/discord/tests/rblx.test.js",
         "watch": "tsc -w -p tsconfig.json",
-        "build": "tsc -p tsconfig.build.json",
-        "lint:f": "npx prettier . --write && npx eslint . --fix"
+        "build": "tsc -p tsconfig.json",
+        "lint:f": "npx prettier . --write && eslint . --fix"
     },
     "keywords": [],
     "type": "module",
@@ -17,7 +17,7 @@
         "url": "https://github.com/Bluejutzu/tests"
     },
     "files": [
-        "dist/**/*.js"
+        "dist/package/**/*.js"
     ],
     "author": "",
     "license": "ISC",
