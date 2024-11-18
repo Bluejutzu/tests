@@ -10,21 +10,21 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
+            - uses: pnpm/action-setup@v4 # Install pnpm using packageManager key in package.json
 
-            - name: Set up Node.js
-              uses: actions/setup-node@v3
+            - name: Use Node.js 20
+              uses: actions/setup-node@v4
               with:
-                  node-version: 16
+                  node-version: 20
+                  cache: "pnpm"
 
             - name: Install dependencies
-              run: pnpm install 
+              run: pnpm install --frozen-lockfile
 
-           
+            - name: Run tests
+              run: pnpm test
+
             - name: Build
-              run: pnpm run build
-
-            # Run tests (adapt for your test runner)
-            - name: Run Linting
-              run: pnpm run lint:f 
-              if: always() # Always run tests, even if previous steps fail
+              run: pnpm build # Always run tests, even if previous steps fail
+              if: always()

@@ -5,10 +5,12 @@
     "private": "true",
     "scripts": {
         "dev": "tsx src/api/app.ts",
+        "test": "pnpm lint && pnpm testTypes",
+        "testTypes": "tsc --noEmit",
         "test:rblx": "node ./dist/discord/tests/rblx.test.js",
         "watch": "tsc -w -p tsconfig.json",
         "build": "tsc -p tsconfig.json",
-        "lint:f": "npx prettier . --write && eslint . --fix"
+        "lint": "npx prettier . --write && eslint . --fix"
     },
     "keywords": [],
     "type": "module",
