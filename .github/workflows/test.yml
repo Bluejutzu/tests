@@ -1,0 +1,31 @@
+name: Test workflow
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+
+            # Install Node.js and npm (if using JavaScript/TypeScript)
+            - name: Set up Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 16 # Or your preferred Node.js version
+
+            # Install dependencies (adapt for your project)
+            - name: Install dependencies
+              run: npm install # or pnpm install, yarn install, etc.
+
+            # If you use a build process (e.g., TypeScript, Webpack, etc.)
+            - name: Build
+              run: npm run build # Or your build command
+
+            # Run tests (adapt for your test runner)
+            - name: Run tests
+              run: npm test # Or your test command (e.g., jest, mocha, vitest, etc.)
+              if: always() # Always run tests, even if previous steps fail
