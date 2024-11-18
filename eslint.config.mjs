@@ -18,6 +18,7 @@ export default tseslint.config(
 
     {
         extends: [],
+        ignores: ["node_modules", "dist"],
         files: ["src/**/*.{tsx,ts,mts,mjs,js,jsx}"],
         plugins: {
             "@stylistic": stylistic,
