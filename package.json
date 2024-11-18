@@ -10,7 +10,7 @@
         "test:rblx": "node ./dist/discord/tests/rblx.test.js",
         "watch": "tsc -w -p tsconfig.json",
         "build": "tsc -p tsconfig.json",
-        "lint": "npx prettier . --write && eslint . --fix"
+        "lint": "eslint"
     },
     "keywords": [],
     "type": "module",
