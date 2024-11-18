@@ -11,7 +11,9 @@
         "esModuleInterop": true,
         "sourceMap": true,
         "allowJs": true,
-        "baseUrl": "./src/"
+        "baseUrl": "./src/",
+        "skipLibCheck": true
     },
-    "include": ["src/**/*"]
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules"]
 }
