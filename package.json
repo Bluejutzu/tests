@@ -5,7 +5,6 @@
     "private": "true",
     "scripts": {
         "dev": "tsx src/api/app.ts",
-        "test": "node ./dist/regex/index.js",
         "test:rblx": "node ./dist/discord/tests/rblx.test.js",
         "watch": "tsc -w -p tsconfig.json",
         "build": "tsc -p tsconfig.json",

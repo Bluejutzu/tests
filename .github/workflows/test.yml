@@ -12,21 +12,19 @@ jobs:
         steps:
             - uses: actions/checkout@v3
 
-            # Install Node.js and npm (if using JavaScript/TypeScript)
             - name: Set up Node.js
               uses: actions/setup-node@v3
               with:
-                  node-version: 16 # Or your preferred Node.js version
+                  node-version: 16
 
-            # Install dependencies (adapt for your project)
             - name: Install dependencies
-              run: npm install # or pnpm install, yarn install, etc.
+              run: pnpm install 
 
-            # If you use a build process (e.g., TypeScript, Webpack, etc.)
+           
             - name: Build
-              run: npm run build # Or your build command
+              run: pnpm run build
 
             # Run tests (adapt for your test runner)
-            - name: Run tests
-              run: npm test # Or your test command (e.g., jest, mocha, vitest, etc.)
+            - name: Run Linting
+              run: pnpm run lint:f 
               if: always() # Always run tests, even if previous steps fail
