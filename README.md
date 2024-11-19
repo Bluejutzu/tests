@@ -86,13 +86,9 @@ client.login(process.env.DISCORD_BOT_TOKEN); // Log in using your bot token.
 -   **`npm run watch`**: Watches for code changes and recompiles.
 -   **`npm run lint:f`**: Runs Prettier and ESLint to format and lint the code.
 
-## Contributing
-
-(Add contribution guidelines here if you plan to open-source this package).
-
 ## License
 
-ISC
+[ISC](./LICENSE)
 
 This README provides a good starting point. You might want to include more details on:
 
