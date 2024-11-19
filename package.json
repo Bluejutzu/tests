@@ -2,7 +2,6 @@
     "name": "bluejutzu-package",
     "version": "1.0.3",
     "description": "Lowkey useless",
-    "private": "false",
     "scripts": {
         "dev": "tsx src/api/app.ts",
         "test": "pnpm lint && pnpm testTypes",
