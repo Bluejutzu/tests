@@ -1,15 +1,5 @@
 import axios from "axios";
-
-export interface DiscordWebhookConfig {
-    message?: string;
-    embeds?: any[]; // You might want to replace 'any' with a more specific type if possible
-}
-
-export interface ResponseReturn {
-    data: any;
-    code: number;
-    statusText?: string;
-}
+import { DiscordWebhookConfig, ResponseReturn } from "package/typings";
 
 export class DiscordWebhook {
     private webhookUrl: string;

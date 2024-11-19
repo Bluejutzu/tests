@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "outDir": "dist",
-        "typeRoots": ["./node_modules/@types"],
+        "typeRoots": ["./node_modules/@types", "./src/package/typings"],
         "module": "Preserve",
         "moduleResolution": "Bundler",
         "target": "ESNext",
@@ -9,11 +9,9 @@
         "noImplicitAny": true,
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
-        "sourceMap": true,
         "allowJs": true,
-        "baseUrl": "./src/",
-        "skipLibCheck": true
+        "baseUrl": "./src/"
     },
-    "include": ["src/**/*.ts"],
+    "include": ["src/package/**/*.ts", "src/utils.ts"],
     "exclude": ["node_modules"]
 }

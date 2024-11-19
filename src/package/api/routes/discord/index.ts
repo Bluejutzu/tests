@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 
-import { DiscordWebhook } from "../../../package/discord/components/useWebhook";
+import { DiscordWebhook } from "../../../discord/components/useWebhook";
 
 const discordRoute = new Hono();
 

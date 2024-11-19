@@ -1,7 +1,9 @@
 {
     "name": "bluejutzu-package",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Lowkey useless",
+    "main": "./dist/package/index.ts",
+    "types": "./dist/",
     "scripts": {
         "dev": "tsx src/api/app.ts",
         "test": "pnpm lint && pnpm testTypes",
@@ -22,9 +24,9 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "@stylistic/eslint-plugin": "^2.10.1",
-        "@types/node": "^22.9.0",
-        "@typescript-eslint/eslint-plugin": "^8.14.0",
+        "@stylistic/eslint-plugin": "^2.11.0",
+        "@types/node": "^22.9.1",
+        "@typescript-eslint/eslint-plugin": "^8.15.0",
         "axios": "^1.7.7",
         "dotenv": "^16.4.5",
         "eslint": "^9.15.0",
@@ -40,13 +42,13 @@
         "ts-node": "^10.9.2",
         "tsx": "^4.19.2",
         "typescript": "^5.6.3",
-        "typescript-eslint": "^8.14.0"
+        "typescript-eslint": "^8.15.0"
     },
     "dependencies": {
         "@discordjs/core": "^2.0.0",
         "@hono/node-server": "^1.13.7",
-        "bluejutzu-package": "^1.0.2",
-        "discord.js": "14.16.0",
+        "bluejutzu-package": "^1.0.3",
+        "discord.js": "14.16.3",
         "hono": "^4.6.10",
         "import-sort": "^6.0.0"
     },
