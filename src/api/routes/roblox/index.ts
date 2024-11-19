@@ -9,6 +9,10 @@ const robloxMessagingService = new RobloxMessagingService({
     apiKey: process.env.ROBLOX_API_KEY
 });
 
+robloxRoute.get("/", async c => {
+    return c.text("/api/roblox api route");
+});
+
 robloxRoute.post("/", async c => {
     const body = await c.req.json();
 
