@@ -1,7 +1,7 @@
 {
     "name": "bluejutzu-package",
     "author": "bluejutzu",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "description": "Lowkey useless",
     "main": "./dist/index.js",
     "types": "./dist/typings",
@@ -20,6 +20,7 @@
     "keywords": [],
     "type": "module",
     "repository": {
+        "type": "git",
         "url": "https://github.com/Bluejutzu/tests"
     },
     "devDependencies": {

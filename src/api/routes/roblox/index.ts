@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 
-import { RobloxMessagingService } from "../../..";
+import RobloxMessagingService from "../../../discord/components/useMessagingService";
 
 const robloxRoute = new Hono();
 
