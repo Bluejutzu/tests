@@ -1,9 +1,11 @@
 {
     "name": "bluejutzu-package",
-    "version": "1.0.6",
+    "author": "bluejutzu",
+    "version": "1.0.7",
     "description": "Lowkey useless",
     "main": "./dist/index.js",
     "types": "./dist/typings",
+    "license": "ISC",
     "scripts": {
         "dev": "tsx src/api/app.ts",
         "test": "pnpm lint && pnpm testTypes",
@@ -11,18 +13,15 @@
         "test:rblx": "node ./dist/discord/tests/rblx.test.js",
         "watch": "tsc -w -p tsconfig.json",
         "build": "tsc -p tsconfig.json",
-        "lint": "eslint"
+        "build:2": "tsc -p tsconfig.json",
+        "lint": "eslint",
+        "lint:f": "eslint --fix"
     },
     "keywords": [],
     "type": "module",
     "repository": {
         "url": "https://github.com/Bluejutzu/tests"
     },
-    "files": [
-        "dist/**/*.js"
-    ],
-    "author": "",
-    "license": "ISC",
     "devDependencies": {
         "@stylistic/eslint-plugin": "^2.11.0",
         "@types/node": "^22.9.1",
@@ -51,6 +50,12 @@
         "discord.js": "14.16.3",
         "hono": "^4.6.10",
         "import-sort": "^6.0.0"
+    },
+    "files": [
+        "dist/**/*.js"
+    ],
+    "engines": {
+        "node": ">=18"
     },
     "packageManager": "pnpm@9.13.2+sha512.88c9c3864450350e65a33587ab801acf946d7c814ed1134da4a924f6df5a2120fd36b46aab68f7cd1d413149112d53c7db3a4136624cfd00ff1846a0c6cef48a"
 }

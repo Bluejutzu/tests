@@ -1,5 +1,6 @@
 import axios from "axios";
-import { DiscordWebhookConfig, ResponseReturn } from "typings";
+
+import { DiscordWebhookConfig, ResponseReturn } from "../../typings";
 
 export class DiscordWebhook {
     private webhookUrl: string;

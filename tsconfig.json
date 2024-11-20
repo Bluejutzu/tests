@@ -9,9 +9,8 @@
         "noImplicitAny": true,
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
-        "allowJs": true,
-        "baseUrl": "./src/"
+        "allowJs": true
     },
-    "include": ["src/**/*.ts", "src/utils.ts", "src/index.ts"],
+    "include": ["src/**/*.ts"],
     "exclude": ["node_modules"]
 }
