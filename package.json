@@ -1,9 +1,9 @@
 {
     "name": "bluejutzu-package",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "Lowkey useless",
     "main": "./dist/package/index.ts",
-    "types": "./dist/",
+    "types": "./dist/typings",
     "scripts": {
         "dev": "tsx src/api/app.ts",
         "test": "pnpm lint && pnpm testTypes",
