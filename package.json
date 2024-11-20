@@ -1,7 +1,7 @@
 {
     "name": "bluejutzu-package",
     "author": "bluejutzu",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "Lowkey useless",
     "main": "./dist/index.js",
     "types": "./dist/typings",
@@ -51,9 +51,6 @@
         "hono": "^4.6.10",
         "import-sort": "^6.0.0"
     },
-    "files": [
-        "dist/**/*.js"
-    ],
     "engines": {
         "node": ">=18"
     },
