@@ -11,6 +11,6 @@
         "esModuleInterop": true,
         "allowJs": true
     },
-    "include": ["src/**/*.ts"],
+    "include": ["src/**/*.ts", "test/index.test.ts", "test/rblx.test.ts"],
     "exclude": ["node_modules"]
 }

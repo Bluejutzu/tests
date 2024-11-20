@@ -1,4 +1,4 @@
-import RobloxMessagingService from "../components/useMessagingService";
+import RobloxMessagingService from "../src/discord/components/useMessagingService";
 const obj = { user: "bluejutzu", reason: "lmao" };
 
 const messagingService = new RobloxMessagingService({
