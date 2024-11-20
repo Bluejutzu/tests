@@ -1,7 +1,7 @@
 {
     "name": "bluejutzu-package",
     "author": "bluejutzu",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "description": "Lowkey useless",
     "main": "./dist/index.js",
     "types": "./dist/typings",
