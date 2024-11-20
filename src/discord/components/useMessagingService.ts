@@ -1,5 +1,5 @@
 import axios, { AxiosError } from "axios";
-import { MessagingServiceOptions, RblxWebhookConfig } from "package/typings";
+import { MessagingServiceOptions, RblxWebhookConfig } from "typings";
 
 export class RobloxMessagingService {
     private universeId: string;

@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "outDir": "dist",
-        "typeRoots": ["./node_modules/@types", "./src/package/typings"],
+        "typeRoots": ["./node_modules/@types", "src/typings"],
         "module": "Preserve",
         "moduleResolution": "Bundler",
         "target": "ESNext",
@@ -12,6 +12,6 @@
         "allowJs": true,
         "baseUrl": "./src/"
     },
-    "include": ["src/package/**/*.ts", "src/utils.ts"],
+    "include": ["src/**/*.ts", "src/utils.ts", "src/index.ts"],
     "exclude": ["node_modules"]
 }

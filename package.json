@@ -1,8 +1,8 @@
 {
     "name": "bluejutzu-package",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "Lowkey useless",
-    "main": "./dist/package/index.ts",
+    "main": "./dist/index.js",
     "types": "./dist/typings",
     "scripts": {
         "dev": "tsx src/api/app.ts",
@@ -19,7 +19,7 @@
         "url": "https://github.com/Bluejutzu/tests"
     },
     "files": [
-        "dist/package/**/*.js"
+        "dist/**/*.js"
     ],
     "author": "",
     "license": "ISC",
