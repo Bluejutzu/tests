@@ -12,13 +12,10 @@ const entries = Object.fromEntries(
 
 export default defineConfig({
     entry: entries,
-    format: ["esm", "cjs"],
-    target: "es2020",
+    format: ["esm"],
+    target: "node16",
     dts: true,
     clean: true,
     splitting: false,
-    treeshake: false,
-    minify: true,
-    minifySyntax: true,
     outDir: "dist"
 });

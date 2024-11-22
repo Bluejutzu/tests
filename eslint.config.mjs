@@ -16,7 +16,7 @@ const commonFiles = "{js,mjs,cjs,ts,mts,cts,jsx,tsx}";
 
 export default tseslint.config({
     extends: [],
-    ignores: ["node_modules", "dist"],
+    ignores: ["./node_modules", "./dist", "./test"],
     files: [`src/**/*.${commonFiles}`],
     plugins: {
         "@stylistic": stylistic,

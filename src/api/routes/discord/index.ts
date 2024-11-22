@@ -4,7 +4,7 @@ import { DiscordWebhook } from "../../../discord/components/useWebhook";
 
 const discordRoute = new Hono();
 
-const discordWebhook = new DiscordWebhook(process.env.DISCORD_WEBHOOK_URL);
+const discordWebhook = new DiscordWebhook(process.env.DISCORD_WEBHOOK_URL!);
 
 // discordRoute.get("/", c => c.text("Hello World"));
 
