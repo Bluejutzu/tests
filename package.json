@@ -3,7 +3,7 @@
     "author": "bluejutzu",
     "version": "1.0.14",
     "description": "Lowkey useless",
-    "license": "ISC",
+    "license": "Apache-2.0",
     "scripts": {
         "dev": "tsx src/api/app.ts",
         "test": "pnpm lint && pnpm testTypes",
