@@ -1,7 +1,7 @@
 {
     "name": "bluejutzu-package",
     "author": "bluejutzu",
-    "version": "1.0.16",
+    "version": "1.0.17",
     "description": "Lowkey useless",
     "license": "Apache-2.0",
     "scripts": {
@@ -10,13 +10,12 @@
         "testTypes": "tsc --noEmit",
         "test:rblx": "node ./dist/discord/tests/rblx.test.js",
         "watch": "tsc -w -p tsconfig.json",
-        "build": "tsc -p tsconfig.json",
-        "build2": "tsup",
+        "build2": "tsc -p tsconfig.json",
+        "build": "tsup ./src",
         "lint": "eslint",
         "lint:f": "eslint --fix"
     },
     "keywords": [],
-    "type": "module",
     "repository": {
         "type": "git",
         "url": "https://github.com/Bluejutzu/tests"
@@ -56,21 +55,19 @@
     "engines": {
         "node": ">=18"
     },
-    "main": "./dist/index.js",
-    "types": "./dist/types.d.ts",
-    "module": "./dist/index.js",
     "files": [
-        "./dist/types.d.ts",
-        "./dist/utils.js",
-        "./dist/discord/**/*.js",
-        "./package.json"
+        "dist",
+        "package.json"
     ],
     "exports": {
         ".": {
             "require": "./dist/index.js",
-            "import": "./dist/index.d.ts",
+            "import": "./dist/index.mjs",
             "types": "./dist/types.d.ts"
         }
     },
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
     "packageManager": "pnpm@9.14.2"
 }
