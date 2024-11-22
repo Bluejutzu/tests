@@ -2,9 +2,9 @@
     "compilerOptions": {
         "outDir": "dist",
         "typeRoots": ["./node_modules/@types", "src/typings"],
-        "module": "Preserve",
-        "moduleResolution": "Bundler",
-        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "node",
+        "target": "ES2023",
         "noEmit": false,
         "noImplicitAny": true,
         "allowSyntheticDefaultImports": true,

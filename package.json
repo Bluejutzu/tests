@@ -3,8 +3,6 @@
     "author": "bluejutzu",
     "version": "1.0.11",
     "description": "Lowkey useless",
-    "main": "./dist/index.js",
-    "types": "./dist/typings",
     "license": "ISC",
     "scripts": {
         "dev": "tsx src/api/app.ts",
@@ -13,7 +11,7 @@
         "test:rblx": "node ./dist/discord/tests/rblx.test.js",
         "watch": "tsc -w -p tsconfig.json",
         "build": "tsc -p tsconfig.json",
-        "build:2": "tsup",
+        "build2": "tsup",
         "lint": "eslint",
         "lint:f": "eslint --fix"
     },
@@ -48,16 +46,28 @@
     "dependencies": {
         "@discordjs/core": "^2.0.0",
         "@hono/node-server": "^1.13.7",
-        "bluejutzu-package": "^1.0.10",
+        "bluejutzu-package": "^1.0.11",
         "discord.js": "14.16.3",
+        "glob": "^11.0.0",
         "hono": "^4.6.11",
         "import-sort": "^6.0.0"
     },
     "engines": {
         "node": ">=18"
     },
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "module": "./dist/index.js",
     "files": [
-        "dist"
+        "./dist",
+        "./package.json"
     ],
+    "exports": {
+        ".": {
+            "require": "./dist/index.js",
+            "import": "./dist/index.cjs",
+            "types": "./dist/index.d.ts"
+        }
+    },
     "packageManager": "pnpm@9.14.2"
 }
