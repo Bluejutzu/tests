@@ -1,5 +1,6 @@
 import { beforeAll, describe, expect, it } from "vitest";
 import { EmbedBuilder } from "discord.js";
+import "dotenv/config";
 
 import { DiscordWebhook } from "../src/discord/components/useWebhook";
 
@@ -9,14 +10,14 @@ const webhookUrl = process.env.DISCORD_WEBHOOK_URL!;
 const webhook = new DiscordWebhook(webhookUrl);
 
 describe("Webhook", () => {
-  let response: any;
+    let response: any;
 
-  beforeAll(async () => {
-    response = await webhook.send({
-      message: "This is a test message",
-      embeds: [_Embed]
+    beforeAll(async () => {
+        response = await webhook.send({
+            message: "This is a test message",
+            embeds: [_Embed]
+        });
     });
-  });
 
-  it("should send a message", () => expect(response).toBeDefined());
+    it("should send a message", () => expect(response).toBeDefined());
 });

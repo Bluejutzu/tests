@@ -1,4 +1,7 @@
+import { beforeAll, describe, expect, it } from "vitest";
 import RobloxMessagingService from "../src/discord/components/useMessagingService";
+import "dotenv/config";
+
 const obj = { user: "bluejutzu", reason: "lmao" };
 
 const messagingService = new RobloxMessagingService({
@@ -6,7 +9,15 @@ const messagingService = new RobloxMessagingService({
     apiKey: process.env.ROBLOX_OPEN_CLOUD_API_KEY!
 });
 
-messagingService.sendMessage({
-    message: JSON.stringify(obj),
-    topic: "announcement"
+describe("Roblox Messaging", () => {
+    let response: any;
+
+    beforeAll(async () => {
+        response = await messagingService.sendMessage({
+            message: obj,
+            topic: "announcement"
+        });
+    });
+
+    it("should send a message", () => expect(response).toBeDefined());
 });

@@ -1,6 +1,8 @@
+import type { EmbedBuilder } from "discord.js";
+
 export interface DiscordWebhookConfig {
     message?: string;
-    embeds?: any[]; // You might want to replace 'any' with a more specific type if possible
+    embeds?: EmbedBuilder[];
 }
 
 export interface ResponseReturn {
