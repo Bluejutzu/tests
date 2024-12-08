@@ -14,7 +14,7 @@ describe("Roblox Messaging", () => {
 
     beforeAll(async () => {
         response = await messagingService.sendMessage({
-            message: obj,
+            message: "fuck",
             topic: "announcement"
         });
     });

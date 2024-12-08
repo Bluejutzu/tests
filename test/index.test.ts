@@ -9,7 +9,7 @@ const _Embed = new EmbedBuilder().setTitle("Lmao").setDescription("Desc").setCol
 const webhookUrl = process.env.DISCORD_WEBHOOK_URL!;
 const webhook = new DiscordWebhook(webhookUrl);
 
-describe("Webhook", () => {
+describe("Discord Webhook", () => {
     let response: any;
 
     beforeAll(async () => {
