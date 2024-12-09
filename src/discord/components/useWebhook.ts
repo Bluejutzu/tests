@@ -9,7 +9,7 @@ export class DiscordWebhook {
         this.webhookUrl = webhookUrl;
     }
 
-    async send(config: DiscordWebhookConfig): Promise<ResponseReturn | void> {
+    public async send(config: DiscordWebhookConfig): Promise<ResponseReturn | void> {
         if (!this.webhookUrl) {
             console.error(new Error("No webhook url found"));
             return;
@@ -33,7 +33,7 @@ export class DiscordWebhook {
                     "Content-Type": "application/json"
                 }
             });
-
+            console.log("Webhook send: " + response.status);
             return {
                 data: response.data,
                 code: response.status,

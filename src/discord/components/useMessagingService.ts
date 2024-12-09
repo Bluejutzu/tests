@@ -29,7 +29,7 @@ export class RobloxMessagingService {
                 }
             );
 
-            console.log("Message sent successfully:", response.data);
+            console.log("Message sent successfully:", response.status);
             return response.status;
         } catch (error) {
             this.handleMessagingError(error as AxiosError);

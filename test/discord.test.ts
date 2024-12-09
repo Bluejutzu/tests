@@ -19,5 +19,7 @@ describe("Discord Webhook", () => {
         });
     });
 
-    it("should send a message", () => expect(response).toBeDefined());
+    it("should send a message", () => {
+        expect(response).toBeDefined()
+    });
 });

@@ -1,6 +1,7 @@
 import type { EmbedBuilder } from "discord.js";
 
 export interface DiscordWebhookConfig {
+    webhookUrl?: string;
     message?: string;
     embeds?: EmbedBuilder[];
 }
